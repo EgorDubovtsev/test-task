@@ -25,23 +25,17 @@ function Operators({choiceMade}) {
         )
     }
 
-
     return (
         <div>
             <div className="background"/>
             <div className="bodyWrapper">
-
                 <Context.Provider value={{setStatus}}>
                     <h1 className="operChoice">Выберите оператора</h1>
                     <SimList operators={operators}/>
-
                 </Context.Provider>
             </div>
-
         </div>
     );
-
-
 }
 
 export default Operators

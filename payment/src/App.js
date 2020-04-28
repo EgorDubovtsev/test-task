@@ -4,14 +4,14 @@ import Operators from "./operators_components/Operators";
 
 
 function App() {
-    const [operator, setOperator] = React.useState("");//изменить на ""
+    const [operator, setOperator] = React.useState("");
 
     function choiceMade({simName}) {
         setOperator(simName)
     }
 
     return (
-        operator !== "" ? <Payment operator={operator}/> : <Operators choiceMade={choiceMade}/>
+        operator === "" ? <Operators choiceMade={choiceMade}/> : <Payment operator={operator}/>
     )
 }
 

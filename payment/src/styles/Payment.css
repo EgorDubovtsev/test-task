@@ -23,6 +23,27 @@ body {
     opacity: 90%;
 }
 
+#resultOperationWindow {
+
+    position: fixed;
+    margin-top: -100px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 4rem;
+    color: #f8f4ff;
+}
+
+
+.success {
+    background: rgba(0, 240, 0, 0.8);
+}
+
+.fail {
+    background: rgba(240, 0, 0, 0.8);
+}
+
 h1 {
     font-size: 5rem;
 }
@@ -200,3 +221,4 @@ h1 {
         justify-content: center;
     }
 }
+
