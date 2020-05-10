@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
-import PhoneField from '../payment_components/PhoneField';
-import PayField from '../payment_components/PayField';
+import PhoneField from './PhoneField';
+import PayField from './PayField';
 import {Formik} from "formik";
 import * as Yup from 'yup';
 import styled, {ThemeProvider} from "styled-components";
-import AlertMessage from "../payment_components/AlertMessage";
+import AlertMessage from "./AlertMessage";
 
 interface IPayment {
     operator: string,
