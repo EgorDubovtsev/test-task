@@ -1,7 +1,7 @@
 import React from 'react';
-import SimList from "./SimList";
+import SimList from "../operators_components/SimList";
 import styled from "styled-components";
-import IOperator from "./IOperator";
+import IOperator from "../operators_components/IOperator";
 
 interface IOperators {
     choiceMade(simName: string): void
@@ -12,7 +12,7 @@ interface IOperators {
 const H1 = styled.h1`
   font-size: 5rem;
   padding-left: 15px;
-`
+`;
 const Operators: React.FunctionComponent<IOperators> = (props) => {
 
     const setStatus = (simName: string) => {
@@ -26,5 +26,6 @@ const Operators: React.FunctionComponent<IOperators> = (props) => {
         </>
     );
 }
+
 
 export default Operators

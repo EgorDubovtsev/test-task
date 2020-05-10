@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
-import {NavLink} from "react-router-dom";
 
 const PageButton = styled.button`
     text-decoration: none;
@@ -50,16 +49,17 @@ const PageWrapper = styled.div`
     display: flex;
     
 `
-const Paginator: React.FunctionComponent = () => {
-    const [disabledButton, setDisabledButton] = useState<string>("1")
+interface IPaginator {
+    changeCurrentPage(page:string):void,
+    currentPage:string
+}
+const Paginator: React.FunctionComponent<IPaginator> = (prop) => {
     return (
         <PageWrapper>
-            <NavLink to="/" style={{textDecoration: "none"}} onClick={() => setDisabledButton("1")}>
-                <PageButton type="button" disabled={disabledButton === "1"}>1</PageButton>
-            </NavLink>
-            <NavLink to="/payment" style={{textDecoration: "none"}} onClick={() => setDisabledButton("2")}>
-                <PageButton type="button" disabled={disabledButton === "2"}>2</PageButton>
-            </NavLink>
+                <PageButton type="button" disabled={prop.currentPage==="operators"} onClick={() => prop.changeCurrentPage("operators")} >1</PageButton>
+
+                <PageButton type="button" disabled={prop.currentPage==="payment"} onClick={() => prop.changeCurrentPage("payment")}>2</PageButton>
+
         </PageWrapper>
     )
 }

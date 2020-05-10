@@ -1,14 +1,17 @@
-import React from "react";
-import PhoneField from './PhoneField';
-import PayField from './PayField';
+import React, {useEffect} from "react";
+import PhoneField from '../payment_components/PhoneField';
+import PayField from '../payment_components/PayField';
 import {Formik} from "formik";
 import * as Yup from 'yup';
 import styled, {ThemeProvider} from "styled-components";
-import AlertMessage from "./AlertMessage";
-import {useHistory} from "react-router-dom";
+import AlertMessage from "../payment_components/AlertMessage";
 
 interface IPayment {
-    operator: string
+    operator: string,
+
+    changeCurrentPage(page: string): void
+
+    validateCheck(operator: string): boolean
 }
 
 const SubmitButton = styled.input`
@@ -117,7 +120,14 @@ const Span = styled.span`
 const Payment: React.FunctionComponent<IPayment> = (prop) => {
     const [operationResult, setOperationResult] = React.useState<string>("")
     const [message, setMessage] = React.useState("")
-    const currentOperator: string = localStorage.getItem("operator") || prop.operator;
+    const [operator, setOperator] = React.useState("");
+    useEffect(() => {
+        let currentOperator: string = localStorage.getItem("operator") || "";
+        setOperator(currentOperator)
+        if (currentOperator === null || !prop.validateCheck(currentOperator!)) {
+            prop.changeCurrentPage("operators")
+        }
+    }, [])
 
     function sendToServer() {
         return Math.round(Math.random());
@@ -127,7 +137,6 @@ const Payment: React.FunctionComponent<IPayment> = (prop) => {
     const min = 1;
     const validationSchema = Yup.object().shape({
         phone: Yup.string()
-            .required("Поле должно быть заполнено")
             .test({
                 name: "wh",
                 exclusive: true,
@@ -136,7 +145,6 @@ const Payment: React.FunctionComponent<IPayment> = (prop) => {
                 test: value => value.search(/_/) === -1
             }),
         money: Yup.mixed()
-            .required()
             .test({
                 name: "min",
                 exclusive: true,
@@ -151,7 +159,6 @@ const Payment: React.FunctionComponent<IPayment> = (prop) => {
                 test: value => Number.parseFloat(value.replace(" ", "").replace("₽", "")) <= max
             })
     })
-    const history = useHistory();
     return (
         <>
             {operationResult !== "" &&
@@ -161,7 +168,7 @@ const Payment: React.FunctionComponent<IPayment> = (prop) => {
                         if (sendToServer()) {
                             setOperationResult("success");
                             setMessage("Операция выполнена");
-                            setTimeout(history.push, 4000, "/")
+                            setTimeout(prop.changeCurrentPage, 4000, "operators")
                             resetForm();
                         } else {
                             setSubmitting(false);
@@ -183,7 +190,7 @@ const Payment: React.FunctionComponent<IPayment> = (prop) => {
                     <form onSubmit={handleSubmit}>
                         <Header>
                             <H1>Перевод средств</H1>
-                            <H2>{currentOperator}</H2>
+                            <H2>{operator}</H2>
                         </Header>
                         <FieldWrapper>
                             <Label>

@@ -1,11 +1,15 @@
 import React, {FunctionComponent} from "react";
 import styled from "styled-components";
 import {NavLink} from "react-router-dom";
+import Link from "next/link";
+
 interface ISim {
-    simName:string,
-    setStatus(simName:string):void
+    simName: string,
+
+    setStatus(simName: string): void
 }
-const SimButton=styled.button`
+
+const SimButton = styled.button`
     padding: 10px;
     width: 300px;
     border: 0;
@@ -26,13 +30,11 @@ const SimButton=styled.button`
         margin-bottom: 20px;
     }
 `;
-const Sim:FunctionComponent<ISim>=(prop)=> {
+const Sim: FunctionComponent<ISim> = (prop) => {
     return (
-        <NavLink to="/payment">
-        <SimButton onClick={() => prop.setStatus(prop.simName)}>
-            {prop.simName}
-        </SimButton>
-        </NavLink>
+            <SimButton onClick={() => prop.setStatus(prop.simName)}>
+                {prop.simName}
+            </SimButton>
     )
 }
 
