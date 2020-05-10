@@ -1,2 +1,2 @@
 # test-task
-https://egordubovtsev.github.io/mobile-payment/
+https://mobile-payment-v2.now.sh/
