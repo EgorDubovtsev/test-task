@@ -12,16 +12,15 @@ interface IPayField {
 }
 
 const StyledInput = styled.input`
-    text-align: center;
+    text-align: right;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 2.2rem;
     border: 1px solid #B4AFAD;
     display: flex;
     height: 53px;
-    width: 240px;
+    width: 220px;
     margin-left: 20px;
-    padding-left: 10px;
-    padding-right: 17px;
+    padding-right: 45px;
     border-radius: 100px;
     :focus {
        outline: 0;

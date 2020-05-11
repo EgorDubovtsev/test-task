@@ -10,17 +10,13 @@ interface ISimList {
 }
 
 const Div = styled.div`
-    justify-content: space-evenly;
     display: flex;
     padding-left: 10%;
     padding-right: 10%;
-    @media screen and (max-device-width: 1950px) {
-        display: flex;
-        margin-bottom: 20px;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-    }
+    margin-bottom: 20px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 `;
 const SimList: React.FC<ISimList> = (props) => {
     return (

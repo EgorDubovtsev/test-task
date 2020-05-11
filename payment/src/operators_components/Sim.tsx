@@ -11,7 +11,6 @@ interface ISim {
 
 const SimButton = styled.button`
     padding: 10px;
-    width: 300px;
     border: 0;
     border-radius: 6px;
     letter-spacing: 1px;
@@ -21,13 +20,11 @@ const SimButton = styled.button`
     font-weight: bold;
     font-size: 2.3rem;
      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+     margin-left: 15%;
+     width: 70%;
+     margin-bottom: 20px;
     :hover{
      box-shadow: 4px 5px 4px 0 #B4AFAD;
-    }
-    @media screen and (max-device-width: 1950px) {
-        margin-left: 15%;
-        width: 70%;
-        margin-bottom: 20px;
     }
 `;
 const Sim: FunctionComponent<ISim> = (prop) => {
